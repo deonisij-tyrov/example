@@ -6,6 +6,7 @@ import com.example.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,25 +29,25 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String getMain(Map<String, Object> model) {
-        model.put("users", personRepository.findAll());
+    public String getMain(@RequestParam(required = false, defaultValue = "") String name, Model model) {
+        if (name != null && !name.isEmpty()) {
+            model.addAttribute("persons", personRepository.findByName(name));
+        } else {
+            model.addAttribute("persons", personRepository.findAll());
+        }
+
+        model.addAttribute("name", name);
+
         return "main";
     }
 
-    @PostMapping("main")
+    @PostMapping("/main")
     public String addPerson(
             @AuthenticationPrincipal User user,
             @RequestParam String name,
             @RequestParam String email, Map<String, Object> model) {
         personRepository.save(new Person(name, email, user));
-        model.put("users", personRepository.findByName(name));
+        model.put("persons", personRepository.findByName(name));
         return "main";
     }
-
-    @PostMapping("filter")
-    public String doFilter (@RequestParam String name, Map<String, Object> model) {
-        model.put("users", personRepository.findByName(name));
-        return "main";
-    }
-
 }
