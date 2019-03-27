@@ -15,6 +15,7 @@ public class Person {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User author;
+    private String filename;
 
     public Person(String name, String email, User author) {
         this.name = name;
@@ -57,4 +58,11 @@ public class Person {
         this.email = email;
     }
 
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 }

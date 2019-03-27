@@ -26,6 +26,25 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Set<Role> roleSet;
 
+    private String email;
+    private String ectivationCode;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEctivationCode() {
+        return ectivationCode;
+    }
+
+    public void setEctivationCode(String ectivationCode) {
+        this.ectivationCode = ectivationCode;
+    }
+
     public Long getId() {
         return id;
     }
@@ -90,5 +109,9 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return isActive;
+    }
+
+    public boolean isAdmin() {
+        return roleSet.contains(Role.ADMIN);
     }
 }
