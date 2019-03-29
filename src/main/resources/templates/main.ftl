@@ -7,7 +7,8 @@
         <button class="btn btn-primary ml-2" type="submit">search</button>
     </form>
 </div>
-<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+   aria-controls="collapseExample">
     add new person
 </a>
 <div class="collapse" id="collapseExample">
@@ -35,7 +36,7 @@
                 <i>${person.email}</i>
             </div>
             <div class="card-footer text-muted">
-                ${person.author.username}
+            ${person.author.username}
             </div>
         </div>
     </#list>

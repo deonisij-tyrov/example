@@ -15,13 +15,13 @@ List of users
     </tr>
     </thead>
     <tbody>
-    <#list users as user>
+        <#list users as user>
         <tr>
             <td>${user.username}</td>
             <td><#list user.roleSet as role>${role}<#sep >, </#list></td>
-            <td><a href="/user/${user.id}">edit</a> </td>
+            <td><a href="/user/${user.id}">edit</a></td>
         </tr>
-    </#list>
+        </#list>
     </tbody>
 </table>
 </@c.page>

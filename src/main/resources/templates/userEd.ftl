@@ -10,7 +10,8 @@
     <input type="file" name="file">
     <#list roles as role>
         <div>
-            <label><input type="checkbox" name="${role}" ${user.roleSet?seq_contains(role)?string("checked", "")}>${role}</label>
+            <label><input type="checkbox"
+                          name="${role}" ${user.roleSet?seq_contains(role)?string("checked", "")}>${role}</label>
         </div>
     </#list>
     <input type="hidden" name="userId" value="${user.id}">

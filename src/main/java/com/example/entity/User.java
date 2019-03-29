@@ -27,7 +27,7 @@ public class User implements UserDetails {
     private Set<Role> roleSet;
 
     private String email;
-    private String ectivationCode;
+    private String activationCode;
 
     public String getEmail() {
         return email;
@@ -37,12 +37,12 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    public String getEctivationCode() {
-        return ectivationCode;
+    public String getActivationCode() {
+        return activationCode;
     }
 
-    public void setEctivationCode(String ectivationCode) {
-        this.ectivationCode = ectivationCode;
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
     }
 
     public Long getId() {
